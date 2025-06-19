@@ -36,6 +36,8 @@ class EditorToolbar {
     EditorToolbar.#l10nRemove ||= Object.freeze({
       freetext: "pdfjs-editor-remove-freetext-button",
       highlight: "pdfjs-editor-remove-highlight-button",
+      rectangle: "pdfjs-editor-remove-rectangle-button",
+      circle: "pdfjs-editor-remove-circle-button",
       ink: "pdfjs-editor-remove-ink-button",
       stamp: "pdfjs-editor-remove-stamp-button",
       signature: "pdfjs-editor-remove-signature-button",

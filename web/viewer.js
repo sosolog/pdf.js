@@ -55,6 +55,10 @@ function getViewerConfiguration() {
       editorHighlightColorPicker: document.getElementById(
         "editorHighlightColorPicker"
       ),
+      editorRectangleButton: document.getElementById("editorRectangleButton"),
+      editorRectangleParamsToolbar: document.getElementById("editorRectangleParamsToolbar"),
+      editorCircleButton: document.getElementById("editorCircleButton"),
+      editorCircleParamsToolbar: document.getElementById("editorCircleParamsToolbar"),
       editorInkButton: document.getElementById("editorInkButton"),
       editorInkParamsToolbar: document.getElementById("editorInkParamsToolbar"),
       editorStampButton: document.getElementById("editorStampButton"),
@@ -243,6 +247,12 @@ function getViewerConfiguration() {
       editorInkColor: document.getElementById("editorInkColor"),
       editorInkThickness: document.getElementById("editorInkThickness"),
       editorInkOpacity: document.getElementById("editorInkOpacity"),
+      editorRectangleColor: document.getElementById("editorRectangleColor"),
+      editorRectangleThickness: document.getElementById("editorRectangleThickness"),
+      editorRectangleOpacity: document.getElementById("editorRectangleOpacity"),
+      editorCircleColor: document.getElementById("editorCircleColor"),
+      editorCircleThickness: document.getElementById("editorCircleThickness"),
+      editorCircleOpacity: document.getElementById("editorCircleOpacity"),
       editorStampAddImage: document.getElementById("editorStampAddImage"),
       editorSignatureAddSignature: document.getElementById(
         "editorSignatureAddSignature"

@@ -30,9 +30,11 @@ import { AnnotationEditor } from "./editor.js";
 import { FreeTextEditor } from "./freetext.js";
 import { HighlightEditor } from "./highlight.js";
 import { InkEditor } from "./ink.js";
+import { RectangleEditor } from "./rectangle.js";
 import { setLayerDimensions } from "../display_utils.js";
 import { SignatureEditor } from "./signature.js";
 import { StampEditor } from "./stamp.js";
+import { CircleEditor } from "./circle.js";
 
 /**
  * @typedef {Object} AnnotationEditorLayerOptions
@@ -96,6 +98,8 @@ class AnnotationEditorLayer {
       StampEditor,
       HighlightEditor,
       SignatureEditor,
+      RectangleEditor,
+      CircleEditor,
     ].map(type => [type._editorType, type])
   );
 
@@ -168,6 +172,8 @@ class AnnotationEditorLayer {
         this.disableClick();
         return;
       case AnnotationEditorType.INK:
+      case AnnotationEditorType.RECTANGLE:
+      case AnnotationEditorType.CIRCLE:
         this.disableTextSelection();
         this.togglePointerEvents(true);
         this.enableClick();
@@ -647,9 +653,23 @@ class AnnotationEditorLayer {
    * @returns {AnnotationEditor | null}
    */
   async deserialize(data) {
+    let annotationType = null;
+    if (data.data.customType) {
+      let customType = data.data.customType;
+      switch (customType) {
+        case 'rectangle':
+          annotationType = AnnotationEditorType.RECTANGLE
+          data.annotationEditorType = AnnotationEditorType.RECTANGLE
+          break;
+        case 'circle':
+          annotationType = AnnotationEditorType.CIRCLE
+          data.annotationEditorType = AnnotationEditorType.RECTANGLE
+          break;
+      }
+    }
     return (
       (await AnnotationEditorLayer.#editorTypes
-        .get(data.annotationType ?? data.annotationEditorType)
+        .get(annotationType ?? data.annotationType ?? data.annotationEditorType)
         ?.deserialize(data, this, this.#uiManager)) || null
     );
   }

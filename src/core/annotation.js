@@ -4381,6 +4381,7 @@ class InkAnnotation extends MarkupAnnotation {
     // We want to be able to add mouse listeners to the annotation.
     this.data.noHTML = false;
     this.data.opacity = dict.get("CA") || 1;
+    this.data.customType = dict.get("CustomType");
 
     const rawInkLists = dict.getArray("InkList");
     if (!Array.isArray(rawInkLists)) {
@@ -4467,10 +4468,12 @@ class InkAnnotation extends MarkupAnnotation {
       rotation,
       thickness,
       user,
+      customType,
     } = annotation;
     const ink = oldAnnotation || new Dict(xref);
     ink.set("Type", Name.get("Annot"));
     ink.set("Subtype", Name.get("Ink"));
+    if (customType) ink.set("CustomType", customType);
     ink.set(oldAnnotation ? "M" : "CreationDate", `D:${getModificationDate()}`);
     ink.set("Rect", rect);
     ink.set("InkList", outlines?.points || paths.points);
@@ -4487,6 +4490,10 @@ class InkAnnotation extends MarkupAnnotation {
       // in Edge's viewer. Acrobat takes into account this parameter to indicate
       // that the Ink is used for highlighting.
       ink.set("IT", Name.get("InkHighlight"));
+    } else if (customType === 'rectangle') {
+      ink.set("IT", Name.get("Rectangle"));
+    } else if (customType === 'circle') {
+      ink.set("IT", Name.get("Circle"));
     }
 
     // Line thickness.

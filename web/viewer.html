@@ -298,6 +298,48 @@ See https://github.com/adobe-type-tools/cmap-resources
                       </div>
                     </div>
                   </div>
+                  <div id="editorRectangle" class="toolbarButtonWithContainer">
+                    <button id="editorRectangleButton" class="toolbarButton" type="button" disabled="disabled" role="radio" aria-expanded="false" aria-haspopup="true" aria-controls="editorRectangleParamsToolbar" tabindex="0" data-l10n-id="pdfjs-editor-rectangle-button">
+                      <span data-l10n-id="pdfjs-editor-rectangle-button-label"></span>
+                    </button>
+                    <div class="editorParamsToolbar hidden doorHangerRight" id="editorRectangleParamsToolbar">
+                      <div class="editorParamsToolbarContainer">
+                        <div class="editorParamsSetter">
+                          <label for="editorRectangleColor" class="editorParamsLabel" data-l10n-id="pdfjs-editor-ink-color-input"></label>
+                          <input type="color" id="editorRectangleColor" class="editorParamsColor" tabindex="0">
+                        </div>
+                        <div class="editorParamsSetter">
+                          <label for="editorRectangleThickness" class="editorParamsLabel" data-l10n-id="pdfjs-editor-ink-thickness-input"></label>
+                          <input type="range" id="editorRectangleThickness" class="editorParamsSlider" value="1" min="1" max="20" step="1" tabindex="0">
+                        </div>
+                        <div class="editorParamsSetter">
+                          <label for="editorRectangleOpacity" class="editorParamsLabel" data-l10n-id="pdfjs-editor-ink-opacity-input"></label>
+                          <input type="range" id="editorRectangleOpacity" class="editorParamsSlider" value="1" min="0.05" max="1" step="0.05" tabindex="0">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="editorCircle" class="toolbarButtonWithContainer">
+                    <button id="editorCircleButton" class="toolbarButton" type="button" disabled="disabled" role="radio" aria-expanded="false" aria-haspopup="true" aria-controls="editorCircleParamsToolbar" tabindex="0" data-l10n-id="pdfjs-editor-rectangle-button">
+                      <span data-l10n-id="pdfjs-editor-rectangle-button-label"></span>
+                    </button>
+                    <div class="editorParamsToolbar hidden doorHangerRight" id="editorCircleParamsToolbar">
+                      <div class="editorParamsToolbarContainer">
+                        <div class="editorParamsSetter">
+                          <label for="editorCircleColor" class="editorParamsLabel" data-l10n-id="pdfjs-editor-ink-color-input"></label>
+                          <input type="color" id="editorCircleColor" class="editorParamsColor" tabindex="0">
+                        </div>
+                        <div class="editorParamsSetter">
+                          <label for="editorCircleThickness" class="editorParamsLabel" data-l10n-id="pdfjs-editor-ink-thickness-input"></label>
+                          <input type="range" id="editorCircleThickness" class="editorParamsSlider" value="1" min="1" max="20" step="1" tabindex="0">
+                        </div>
+                        <div class="editorParamsSetter">
+                          <label for="editorCircleOpacity" class="editorParamsLabel" data-l10n-id="pdfjs-editor-ink-opacity-input"></label>
+                          <input type="range" id="editorCircleOpacity" class="editorParamsSlider" value="1" min="0.05" max="1" step="0.05" tabindex="0">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div id="editorInk" class="toolbarButtonWithContainer">
                     <button id="editorInkButton" class="toolbarButton" type="button" disabled="disabled" role="radio" aria-expanded="false" aria-haspopup="true" aria-controls="editorInkParamsToolbar" tabindex="0" data-l10n-id="pdfjs-editor-ink-button">
                       <span data-l10n-id="pdfjs-editor-ink-button-label"></span>

@@ -92,6 +92,30 @@ class Toolbar {
         },
       },
       {
+        element: options.editorRectangleButton,
+        eventName: "switchannotationeditormode",
+        eventDetails: {
+          get mode() {
+            const { classList } = options.editorRectangleButton;
+            return classList.contains("toggled")
+              ? AnnotationEditorType.NONE
+              : AnnotationEditorType.RECTANGLE;
+          },
+        },
+      },
+      {
+        element: options.editorCircleButton,
+        eventName: "switchannotationeditormode",
+        eventDetails: {
+          get mode() {
+            const { classList } = options.editorCircleButton;
+            return classList.contains("toggled")
+              ? AnnotationEditorType.NONE
+              : AnnotationEditorType.CIRCLE;
+          },
+        },
+      },
+      {
         element: options.editorInkButton,
         eventName: "switchannotationeditormode",
         eventDetails: {
@@ -282,6 +306,10 @@ class Toolbar {
       editorFreeTextParamsToolbar,
       editorHighlightButton,
       editorHighlightParamsToolbar,
+      editorRectangleButton,
+      editorRectangleParamsToolbar,
+      editorCircleButton,
+      editorCircleParamsToolbar,
       editorInkButton,
       editorInkParamsToolbar,
       editorStampButton,
@@ -306,6 +334,16 @@ class Toolbar {
       editorInkParamsToolbar
     );
     toggleExpandedBtn(
+      editorRectangleButton,
+      mode === AnnotationEditorType.RECTANGLE,
+      editorRectangleParamsToolbar
+    );
+    toggleExpandedBtn(
+      editorCircleButton,
+      mode === AnnotationEditorType.CIRCLE,
+      editorCircleParamsToolbar
+    );
+    toggleExpandedBtn(
       editorStampButton,
       mode === AnnotationEditorType.STAMP,
       editorStampParamsToolbar
@@ -320,6 +358,8 @@ class Toolbar {
     editorFreeTextButton.disabled = isDisable;
     editorHighlightButton.disabled = isDisable;
     editorInkButton.disabled = isDisable;
+    editorRectangleButton.disabled = isDisable;
+    editorCircleButton.disabled = isDisable;
     editorStampButton.disabled = isDisable;
     editorSignatureButton.disabled = isDisable;
   }

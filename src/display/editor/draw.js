@@ -873,7 +873,7 @@ class DrawingEditor extends AnnotationEditor {
         mustExec: false,
         type: AnnotationEditorParamsType.DRAW_STEP,
       });
-
+      this._currentParent.endDrawingSession();
       return;
     }
 
@@ -889,6 +889,12 @@ class DrawingEditor extends AnnotationEditor {
     parent.cleanUndoStack(AnnotationEditorParamsType.DRAW_STEP);
 
     if (!DrawingEditor.#currentDraw.isEmpty()) {
+      if (DrawingEditor.#currentDraw.isCancellable()) {
+        parent.drawLayer.remove(this._currentDrawId);
+        this._cleanup(true);
+        return null;
+      }
+
       const {
         pageDimensions: [pageWidth, pageHeight],
         scale,

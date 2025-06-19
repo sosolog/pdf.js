@@ -2783,10 +2783,15 @@ class InkAnnotationElement extends AnnotationElement {
     // directly and to draw both straight lines and curves.
     this.svgElementName = "svg:polyline";
 
-    this.annotationEditorType =
-      this.data.it === "InkHighlight"
-        ? AnnotationEditorType.HIGHLIGHT
-        : AnnotationEditorType.INK;
+    this.annotationEditorType = AnnotationEditorType.INK;
+    if (this.data.it === "InkHighlight") {
+      this.annotationEditorType = AnnotationEditorType.HIGHLIGHT;
+    }
+    if (this.data.customType === "rectangle") {
+      this.annotationEditorType = AnnotationEditorType.RECTANGLE;
+    } else if (this.data.customType === "circle") {
+      this.annotationEditorType = AnnotationEditorType.CIRCLE;
+    }
   }
 
   #getTransform(rotation, rect) {

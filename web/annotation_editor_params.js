@@ -24,6 +24,12 @@ import { AnnotationEditorParamsType } from "pdfjs-lib";
  * @property {HTMLInputElement} editorInkColor
  * @property {HTMLInputElement} editorInkThickness
  * @property {HTMLInputElement} editorInkOpacity
+ * @property {HTMLInputElement} editorRectangleColor
+ * @property {HTMLInputElement} editorRectangleThickness
+ * @property {HTMLInputElement} editorRectangleOpacity
+ * @property {HTMLInputElement} editorCircleColor
+ * @property {HTMLInputElement} editorCircleThickness
+ * @property {HTMLInputElement} editorCircleOpacity
  * @property {HTMLButtonElement} editorStampAddImage
  * @property {HTMLInputElement} editorFreeHighlightThickness
  * @property {HTMLButtonElement} editorHighlightShowAll
@@ -49,6 +55,12 @@ class AnnotationEditorParams {
     editorInkColor,
     editorInkThickness,
     editorInkOpacity,
+    editorRectangleColor,
+    editorRectangleThickness,
+    editorRectangleOpacity,
+    editorCircleColor,
+    editorCircleThickness,
+    editorCircleOpacity,
     editorStampAddImage,
     editorFreeHighlightThickness,
     editorHighlightShowAll,
@@ -77,6 +89,24 @@ class AnnotationEditorParams {
     });
     editorInkOpacity.addEventListener("input", function () {
       dispatchEvent("INK_OPACITY", this.valueAsNumber);
+    });
+    editorRectangleColor.addEventListener("input", function () {
+      dispatchEvent("RECTANGLE_COLOR", this.value);
+    });
+    editorRectangleThickness.addEventListener("input", function () {
+      dispatchEvent("RECTANGLE_THICKNESS", this.valueAsNumber);
+    });
+    editorRectangleOpacity.addEventListener("input", function () {
+      dispatchEvent("RECTANGLE_OPACITY", this.valueAsNumber);
+    });
+    editorCircleColor.addEventListener("input", function () {
+      dispatchEvent("CIRCLE_COLOR", this.value);
+    });
+    editorCircleThickness.addEventListener("input", function () {
+      dispatchEvent("CIRCLE_THICKNESS", this.valueAsNumber);
+    });
+    editorCircleOpacity.addEventListener("input", function () {
+      dispatchEvent("CIRCLE_OPACITY", this.valueAsNumber);
     });
     editorStampAddImage.addEventListener("click", () => {
       eventBus.dispatch("reporttelemetry", {
@@ -117,6 +147,24 @@ class AnnotationEditorParams {
             break;
           case AnnotationEditorParamsType.INK_OPACITY:
             editorInkOpacity.value = value;
+            break;
+          case AnnotationEditorParamsType.RECTANGLE_COLOR:
+            editorRectangleColor.value = value;
+            break;
+          case AnnotationEditorParamsType.RECTANGLE_THICKNESS:
+            editorRectangleThickness.value = value;
+            break;
+          case AnnotationEditorParamsType.RECTANGLE_OPACITY:
+            editorRectangleOpacity.value = value;
+            break;
+          case AnnotationEditorParamsType.CIRCLE_COLOR:
+            editorCircleColor.value = value;
+            break;
+          case AnnotationEditorParamsType.CIRCLE_THICKNESS:
+            editorCircleThickness.value = value;
+            break;
+          case AnnotationEditorParamsType.CIRCLE_OPACITY:
+            editorCircleOpacity.value = value;
             break;
           case AnnotationEditorParamsType.HIGHLIGHT_DEFAULT_COLOR:
             eventBus.dispatch("mainhighlightcolorpickerupdatecolor", {
